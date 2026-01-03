@@ -504,6 +504,170 @@ async def get_job_status(job_id: str):
     )
 
 
+# =============================================================================
+# CGM GUARDIAN ENDPOINTS - The 3AM Guardian
+# =============================================================================
+
+class CGMPredictRequest(BaseModel):
+    """Request for CGM prediction"""
+    glucose_history: List[float] = Field(..., description="Glucose values in mg/dL (5-min intervals, at least 24 values)")
+    timestamps: Optional[List[str]] = Field(None, description="ISO timestamps for each reading")
+    patient_id: Optional[str] = None
+
+class CGMPredictResponse(BaseModel):
+    """Response from CGM prediction"""
+    current_glucose: float
+    predicted_30min: float
+    predicted_60min: float
+    predicted_sequence: List[float]
+    anomaly: Dict[str, Any]
+    trend: Dict[str, Any]
+    alert: bool
+    alert_level: str
+    alert_message: Optional[str]
+    time_in_range: Dict[str, float]
+
+@app.post("/cgm/predict", response_model=CGMPredictResponse)
+async def predict_glucose(request: CGMPredictRequest):
+    """
+    🐝 THE 3AM GUARDIAN - CGM Glucose Prediction
+
+    Predicts glucose 30 and 60 minutes ahead with anomaly detection.
+
+    Input:
+    - glucose_history: List of glucose values in mg/dL (5-min intervals)
+    - timestamps: Optional ISO timestamps
+
+    Returns:
+    - Predictions for 30min and 60min ahead
+    - Anomaly classification (SEVERE_HYPO, HYPO, NORMAL, HYPER, SEVERE_HYPER)
+    - Trend (FALLING, STABLE, RISING)
+    - Alerts for dangerous glucose levels
+    """
+    from stinger.models.cgm_guardian import get_cgm_guardian
+
+    guardian = get_cgm_guardian()
+
+    if len(request.glucose_history) < 6:
+        raise HTTPException(400, "Need at least 6 glucose readings (30 minutes)")
+
+    prediction = guardian.predict(
+        glucose_history=request.glucose_history,
+        timestamps=request.timestamps,
+    )
+
+    if "error" in prediction:
+        raise HTTPException(500, prediction["error"])
+
+    return CGMPredictResponse(**prediction)
+
+
+@app.get("/cgm/health")
+async def cgm_health():
+    """Check CGM Guardian health"""
+    from stinger.models.cgm_guardian import get_cgm_guardian
+
+    guardian = get_cgm_guardian()
+    loaded = guardian.load()
+
+    return {
+        "service": "cgm_guardian",
+        "name": "The 3AM Guardian",
+        "status": "healthy" if loaded else "model_not_loaded",
+        "model_path": str(guardian.model_path),
+        "device": str(guardian.device),
+        "capabilities": [
+            "glucose_forecasting_30min",
+            "glucose_forecasting_60min",
+            "anomaly_detection",
+            "trend_classification",
+            "hypoglycemia_alerts",
+        ]
+    }
+
+
+# =============================================================================
+# ECG TRANSFORMER ENDPOINTS
+# =============================================================================
+
+class ECGAnalyzeRequest(BaseModel):
+    """Request for ECG analysis"""
+    signal: List[List[float]] = Field(..., description="12-lead ECG signal [12, samples] or [samples, 12]")
+    sampling_rate: int = Field(500, description="Sampling rate in Hz")
+    patient_id: Optional[str] = None
+
+class ECGAnalyzeResponse(BaseModel):
+    """Response from ECG analysis"""
+    primary_diagnosis: Dict[str, Any]
+    all_diagnoses: List[Dict[str, Any]]
+    superclass_probabilities: Dict[str, float]
+    is_normal: bool
+    requires_attention: bool
+    urgency: str
+
+@app.post("/ecg/analyze", response_model=ECGAnalyzeResponse)
+async def analyze_ecg(request: ECGAnalyzeRequest):
+    """
+    🐝 ECG-TRANSFORMER - 12-Lead ECG Analysis
+
+    Analyzes 12-lead ECG for diagnostic classification.
+
+    Input:
+    - signal: 12-lead ECG signal [12, samples] or [samples, 12]
+    - sampling_rate: Sample rate in Hz (default 500)
+
+    Returns:
+    - Primary diagnosis with confidence
+    - All detected findings
+    - Urgency level
+    """
+    from stinger.models.ecg_transformer import get_ecg_analyzer
+    import numpy as np
+
+    analyzer = get_ecg_analyzer()
+
+    signal = np.array(request.signal)
+    if signal.size == 0:
+        raise HTTPException(400, "Empty signal provided")
+
+    analysis = analyzer.analyze(
+        signal=signal,
+        sampling_rate=request.sampling_rate,
+    )
+
+    if "error" in analysis:
+        raise HTTPException(500, analysis["error"])
+
+    return ECGAnalyzeResponse(**analysis)
+
+
+@app.get("/ecg/health")
+async def ecg_health():
+    """Check ECG Transformer health"""
+    from stinger.models.ecg_transformer import get_ecg_analyzer
+
+    analyzer = get_ecg_analyzer()
+    loaded = analyzer.load()
+
+    return {
+        "service": "ecg_transformer",
+        "name": "QueenBee ECG-Transformer",
+        "status": "healthy" if loaded else "model_not_loaded",
+        "model_path": str(analyzer.model_path),
+        "device": str(analyzer.device),
+        "capabilities": [
+            "12_lead_analysis",
+            "superclass_classification",
+            "mi_detection",
+            "arrhythmia_detection",
+        ]
+    }
+
+
+# =============================================================================
+# REPORT ENDPOINTS
+# =============================================================================
+
 @app.get("/reports/{filename}")
 async def get_report(filename: str):
     """Download a generated report"""
