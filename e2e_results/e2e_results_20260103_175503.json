@@ -1,0 +1,48 @@
+{
+  "summary": {
+    "total_samples": 1,
+    "completed": 1,
+    "failed": 0,
+    "abstained": 0,
+    "completion_rate": 1.0,
+    "spine": "0/0",
+    "ecg": "0/0",
+    "cgm": "1/1"
+  },
+  "timing": {
+    "total_time_ms": 25026,
+    "avg_time_ms": 25026.0,
+    "p50_time_ms": 25026,
+    "p95_time_ms": 25026,
+    "min_time_ms": 25026,
+    "max_time_ms": 25026
+  },
+  "integrity": {
+    "all_pdfs_exist": true,
+    "all_ledger_entries": true,
+    "all_hashes_valid": true
+  },
+  "results": [
+    {
+      "job_id": "stinger-6ef05dfc47b7",
+      "sample_path": "e2e_samples/cgm/cgm_001_normal.csv",
+      "study_type": "cgm",
+      "status": "completed",
+      "submit_time": 1767462878.1319768,
+      "complete_time": 1767462903.158667,
+      "total_time_ms": 25026,
+      "pdf_exists": true,
+      "pdf_size_bytes": 4364,
+      "merkle_root": "0x89c06ae4eff3216b2d05331292811e1b735495a81f7f72f49feef4b3799c721f",
+      "ipfs_cid": "Qm1fb181fb1ab726b7f4765afa750a16db300c01c0a9d8",
+      "signature": "0x75f836e17a57cd4bf4b1bf90a428c6db3c4bd11e06704f8bf5086aced81a00b60000000000000000000000000000000000000000000000000000000000000000",
+      "epoch_id": "epoch-0001-alpha",
+      "report_length": 1851,
+      "findings_count": 0,
+      "error": "",
+      "abstained": false,
+      "input_hash": "b97c09b15350dd1dcc0b78dc6a8646d5249ab95044445961dbdbd50d7b693ba4",
+      "output_hash": "5f1a5fb02bf713032b20f7d97d5a6265272b2ffa77bd0114daad2862a63d32bc"
+    }
+  ]
+}

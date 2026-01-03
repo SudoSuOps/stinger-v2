@@ -225,11 +225,11 @@ class StudyClassifier:
         """Classify DICOM study"""
         metadata = study_data.get("metadata", {})
         
-        # Extract relevant fields
-        modality_str = study_data.get("modality", "").upper()
-        body_part = study_data.get("body_part", "").lower()
-        study_desc = study_data.get("study_description", "").lower()
-        series_desc = study_data.get("series_description", "").lower()
+        # Extract relevant fields (handle None values)
+        modality_str = (study_data.get("modality") or "").upper()
+        body_part = (study_data.get("body_part") or "").lower()
+        study_desc = (study_data.get("study_description") or "").lower()
+        series_desc = (study_data.get("series_description") or "").lower()
         
         # Combine descriptions for searching
         combined_desc = f"{body_part} {study_desc} {series_desc}"
