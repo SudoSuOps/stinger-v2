@@ -1,0 +1,101 @@
+# =============================================================================
+# STINGER V2 — Docker Compose Stack
+# stinger.swarmbee.eth
+#
+# Full sovereign medical AI pipeline:
+# Stinger → QueenBee → Bumble70B → IPFS → Ledger
+# =============================================================================
+
+version: "3.9"
+
+services:
+  # ===========================================================================
+  # STINGER V2 - Gateway
+  # ===========================================================================
+  stinger:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stinger-v2
+    hostname: stinger.swarmbee.eth
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+    environment:
+      - QUEENBEE_URL=http://queenbee:8200
+      - BUMBLE_URL=http://bumble:8000
+      - IPFS_GATEWAY=http://ipfs:5001
+      - OUTPUT_DIR=/opt/stinger/outputs
+      - LEDGER_DB_PATH=/opt/stinger/ledger.db
+      - SIGNER_PRIVATE_KEY=${SIGNER_PRIVATE_KEY:-}
+    volumes:
+      - stinger-outputs:/opt/stinger/outputs
+      - stinger-ledger:/opt/stinger
+    networks:
+      - swarm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8100/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.stinger.rule=Host(`stinger.swarmbee.eth`)"
+
+  # ===========================================================================
+  # QUEENBEE - Prompt Orchestrator (lightweight, can run on Zimaboard)
+  # ===========================================================================
+  queenbee:
+    image: python:3.11-slim
+    container_name: queenbee
+    hostname: queenbee.swarmbee.eth
+    restart: unless-stopped
+    ports:
+      - "8200:8200"
+    working_dir: /app
+    command: >
+      sh -c "pip install fastapi uvicorn httpx && 
+             echo 'from fastapi import FastAPI; app = FastAPI()' > main.py &&
+             echo '@app.get(\"/health\")' >> main.py &&
+             echo 'def health(): return {\"status\": \"online\", \"ens\": \"queenbee.swarmbee.eth\"}' >> main.py &&
+             echo '@app.post(\"/prompt\")' >> main.py &&
+             echo 'def prompt(data: dict): return {\"system\": \"You are a medical AI.\", \"user\": str(data)}' >> main.py &&
+             uvicorn main:app --host 0.0.0.0 --port 8200"
+    networks:
+      - swarm-network
+
+  # ===========================================================================
+  # IPFS - Content-addressed storage
+  # ===========================================================================
+  ipfs:
+    image: ipfs/kubo:latest
+    container_name: ipfs
+    hostname: ipfs.swarmbee.eth
+    restart: unless-stopped
+    ports:
+      - "4001:4001"   # P2P
+      - "5001:5001"   # API
+      - "8080:8080"   # Gateway
+    volumes:
+      - ipfs-data:/data/ipfs
+    networks:
+      - swarm-network
+
+# =============================================================================
+# NETWORKS
+# =============================================================================
+networks:
+  swarm-network:
+    name: swarm-network
+    driver: bridge
+
+# =============================================================================
+# VOLUMES
+# =============================================================================
+volumes:
+  stinger-outputs:
+    name: stinger-outputs
+  stinger-ledger:
+    name: stinger-ledger
+  ipfs-data:
+    name: ipfs-data

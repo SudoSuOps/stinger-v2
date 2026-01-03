@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stinger-v2"
+version = "2.0.0"
+description = "Intelligent Medical AI Gateway — stinger.swarmbee.eth"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "TrustCat", email = "dev@trustcat.ai"}
+]
+keywords = [
+    "medical-ai",
+    "radiology",
+    "healthcare",
+    "dicom",
+    "ecg",
+    "cgm",
+    "sovereign-ai",
+    "ethereum",
+    "merkle-tree"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "httpx>=0.25.0",
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+full = [
+    "pydicom>=2.4.0",
+    "pydicom[pixeldata]",
+    "reportlab>=4.0.0",
+    "eth-account>=0.10.0",
+    "pycryptodome>=3.19.0",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.11.0",
+    "ruff>=0.1.6",
+    "mypy>=1.7.0",
+]
+all = [
+    "stinger-v2[full,dev]",
+]
+
+[project.urls]
+Homepage = "https://trustcat.ai"
+Documentation = "https://docs.trustcat.ai/stinger"
+Repository = "https://github.com/swarmhealth/stinger-v2"
+Issues = "https://github.com/swarmhealth/stinger-v2/issues"
+
+[project.scripts]
+stinger = "stinger.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["stinger*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+ignore_missing_imports = true
