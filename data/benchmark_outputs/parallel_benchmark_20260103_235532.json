@@ -1,0 +1,135 @@
+{
+  "config": {
+    "workers": 4,
+    "studies": 20
+  },
+  "summary": {
+    "successful": 20,
+    "wall_clock_seconds": 57.663933094998356,
+    "actual_throughput_per_hour": 1248.6141013202084,
+    "avg_total_ms": 10125.37333675209,
+    "avg_llm_ms": 9189.47725915059
+  },
+  "results": [
+    {
+      "id": "par-0000",
+      "success": true,
+      "total_ms": 11292.216357003781,
+      "llm_ms": 10047.785224000108
+    },
+    {
+      "id": "par-0001",
+      "success": true,
+      "total_ms": 2446.8985720013734,
+      "llm_ms": 1712.898996003787
+    },
+    {
+      "id": "par-0002",
+      "success": true,
+      "total_ms": 7031.481600002735,
+      "llm_ms": 6949.785593998968
+    },
+    {
+      "id": "par-0003",
+      "success": true,
+      "total_ms": 5163.9367080060765,
+      "llm_ms": 4539.450537995435
+    },
+    {
+      "id": "par-0004",
+      "success": true,
+      "total_ms": 11700.780279003084,
+      "llm_ms": 10156.577610003296
+    },
+    {
+      "id": "par-0005",
+      "success": true,
+      "total_ms": 9492.59896800504,
+      "llm_ms": 8824.42426700436
+    },
+    {
+      "id": "par-0006",
+      "success": true,
+      "total_ms": 9545.279672995093,
+      "llm_ms": 8250.318202990456
+    },
+    {
+      "id": "par-0007",
+      "success": true,
+      "total_ms": 11645.32900499762,
+      "llm_ms": 10244.317251999746
+    },
+    {
+      "id": "par-0008",
+      "success": true,
+      "total_ms": 10347.890228993492,
+      "llm_ms": 9949.337206009659
+    },
+    {
+      "id": "par-0009",
+      "success": true,
+      "total_ms": 10264.586361008696,
+      "llm_ms": 9383.715905001736
+    },
+    {
+      "id": "par-0010",
+      "success": true,
+      "total_ms": 13391.713190008886,
+      "llm_ms": 13315.996967998217
+    },
+    {
+      "id": "par-0011",
+      "success": true,
+      "total_ms": 10903.274103999138,
+      "llm_ms": 9578.047774994047
+    },
+    {
+      "id": "par-0012",
+      "success": true,
+      "total_ms": 10170.528545000707,
+      "llm_ms": 9016.02061300946
+    },
+    {
+      "id": "par-0013",
+      "success": true,
+      "total_ms": 11061.578021995956,
+      "llm_ms": 9638.307440996869
+    },
+    {
+      "id": "par-0014",
+      "success": true,
+      "total_ms": 8409.491608006647,
+      "llm_ms": 6975.8458209980745
+    },
+    {
+      "id": "par-0015",
+      "success": true,
+      "total_ms": 8012.8365630080225,
+      "llm_ms": 7588.960027002031
+    },
+    {
+      "id": "par-0016",
+      "success": true,
+      "total_ms": 9849.838142006774,
+      "llm_ms": 8302.497202006634
+    },
+    {
+      "id": "par-0017",
+      "success": true,
+      "total_ms": 12116.057772989734,
+      "llm_ms": 11992.750817007618
+    },
+    {
+      "id": "par-0018",
+      "success": true,
+      "total_ms": 13857.502947998,
+      "llm_ms": 12374.366420990555
+    },
+    {
+      "id": "par-0019",
+      "success": true,
+      "total_ms": 15803.64808801096,
+      "llm_ms": 14948.141303000739
+    }
+  ]
+}

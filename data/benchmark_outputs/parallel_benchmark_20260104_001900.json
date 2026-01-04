@@ -1,0 +1,135 @@
+{
+  "config": {
+    "workers": 2,
+    "studies": 20
+  },
+  "summary": {
+    "successful": 20,
+    "wall_clock_seconds": 59.613661310999305,
+    "actual_throughput_per_hour": 1207.776848739121,
+    "avg_total_ms": 5816.176365352294,
+    "avg_llm_ms": 4868.975057348143
+  },
+  "results": [
+    {
+      "id": "par-0000",
+      "success": true,
+      "total_ms": 4521.2815910053905,
+      "llm_ms": 3284.706392994849
+    },
+    {
+      "id": "par-0001",
+      "success": true,
+      "total_ms": 5140.773579012603,
+      "llm_ms": 4405.410922001465
+    },
+    {
+      "id": "par-0002",
+      "success": true,
+      "total_ms": 3754.6914880076656,
+      "llm_ms": 3627.6843350060517
+    },
+    {
+      "id": "par-0003",
+      "success": true,
+      "total_ms": 3445.1564040064113,
+      "llm_ms": 2813.5973939934047
+    },
+    {
+      "id": "par-0004",
+      "success": true,
+      "total_ms": 5569.256125992979,
+      "llm_ms": 4025.602997993701
+    },
+    {
+      "id": "par-0005",
+      "success": true,
+      "total_ms": 7334.065806004219,
+      "llm_ms": 6669.636335995165
+    },
+    {
+      "id": "par-0006",
+      "success": true,
+      "total_ms": 7282.61869000562,
+      "llm_ms": 5988.182542991126
+    },
+    {
+      "id": "par-0007",
+      "success": true,
+      "total_ms": 7923.097867998877,
+      "llm_ms": 6535.667937001563
+    },
+    {
+      "id": "par-0008",
+      "success": true,
+      "total_ms": 5144.908689995646,
+      "llm_ms": 4757.090104991221
+    },
+    {
+      "id": "par-0009",
+      "success": true,
+      "total_ms": 2424.851268006023,
+      "llm_ms": 1547.7268030081177
+    },
+    {
+      "id": "par-0010",
+      "success": true,
+      "total_ms": 6229.354889001115,
+      "llm_ms": 6124.789098001202
+    },
+    {
+      "id": "par-0011",
+      "success": true,
+      "total_ms": 9110.950574002345,
+      "llm_ms": 7776.713173996541
+    },
+    {
+      "id": "par-0012",
+      "success": true,
+      "total_ms": 6915.083441999741,
+      "llm_ms": 5765.685874997871
+    },
+    {
+      "id": "par-0013",
+      "success": true,
+      "total_ms": 6387.655482001719,
+      "llm_ms": 4875.122313998872
+    },
+    {
+      "id": "par-0014",
+      "success": true,
+      "total_ms": 5882.1414560079575,
+      "llm_ms": 4455.830713006435
+    },
+    {
+      "id": "par-0015",
+      "success": true,
+      "total_ms": 3874.8674069938716,
+      "llm_ms": 3416.8904069956625
+    },
+    {
+      "id": "par-0016",
+      "success": true,
+      "total_ms": 5879.344554996351,
+      "llm_ms": 4303.314232995035
+    },
+    {
+      "id": "par-0017",
+      "success": true,
+      "total_ms": 6123.758148998604,
+      "llm_ms": 5997.565366997151
+    },
+    {
+      "id": "par-0018",
+      "success": true,
+      "total_ms": 6772.51771101146,
+      "llm_ms": 5250.965701998211
+    },
+    {
+      "id": "par-0019",
+      "success": true,
+      "total_ms": 6607.152131997282,
+      "llm_ms": 5757.318497999222
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "config": {
+    "workers": 2,
+    "studies": 15
+  },
+  "summary": {
+    "successful": 15,
+    "wall_clock_seconds": 38.44219462899491,
+    "actual_throughput_per_hour": 1404.7064825812693,
+    "avg_total_ms": 4895.150966665824,
+    "avg_llm_ms": 3919.4027155996687
+  },
+  "results": [
+    {
+      "id": "par-0000",
+      "success": true,
+      "total_ms": 7511.191013996722,
+      "llm_ms": 6260.474704002263
+    },
+    {
+      "id": "par-0001",
+      "success": true,
+      "total_ms": 4956.323877995601,
+      "llm_ms": 4178.987959006918
+    },
+    {
+      "id": "par-0002",
+      "success": true,
+      "total_ms": 3063.829524005996,
+      "llm_ms": 2909.626348002348
+    },
+    {
+      "id": "par-0003",
+      "success": true,
+      "total_ms": 3304.4509169994853,
+      "llm_ms": 2639.8440649936674
+    },
+    {
+      "id": "par-0004",
+      "success": true,
+      "total_ms": 2808.463979003136,
+      "llm_ms": 1262.5075919931987
+    },
+    {
+      "id": "par-0005",
+      "success": true,
+      "total_ms": 2551.3266310008476,
+      "llm_ms": 1886.0804330033716
+    },
+    {
+      "id": "par-0006",
+      "success": true,
+      "total_ms": 6334.5835610089125,
+      "llm_ms": 5045.220264000818
+    },
+    {
+      "id": "par-0007",
+      "success": true,
+      "total_ms": 7194.420022991835,
+      "llm_ms": 5777.806906990008
+    },
+    {
+      "id": "par-0008",
+      "success": true,
+      "total_ms": 3369.0807959937956,
+      "llm_ms": 2936.147140004323
+    },
+    {
+      "id": "par-0009",
+      "success": true,
+      "total_ms": 2460.6763150077313,
+      "llm_ms": 1548.6334140005056
+    },
+    {
+      "id": "par-0010",
+      "success": true,
+      "total_ms": 6258.162690006429,
+      "llm_ms": 6172.348965003039
+    },
+    {
+      "id": "par-0011",
+      "success": true,
+      "total_ms": 8991.52826599311,
+      "llm_ms": 7619.325309991837
+    },
+    {
+      "id": "par-0012",
+      "success": true,
+      "total_ms": 6112.805259996094,
+      "llm_ms": 4925.452839990612
+    },
+    {
+      "id": "par-0013",
+      "success": true,
+      "total_ms": 4226.994425989687,
+      "llm_ms": 2783.460268008639
+    },
+    {
+      "id": "par-0014",
+      "success": true,
+      "total_ms": 4283.427219997975,
+      "llm_ms": 2845.1245250034845
+    }
+  ]
+}

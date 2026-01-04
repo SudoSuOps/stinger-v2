@@ -1,0 +1,55 @@
+{
+  "benchmark_time": "2026-01-03T23:29:21.749570",
+  "config": {
+    "num_studies": 3,
+    "warmup": 1,
+    "spine_model": "/home/ai/Desktop/quantum-rails/queenbee-llm/spine_detector/checkpoints/spine_detector_20260103_140009/weights/best.pt",
+    "bumble_url": "http://localhost:11434",
+    "queenbee_url": "http://192.168.0.52:8200"
+  },
+  "summary": {
+    "total_studies": 3,
+    "successful": 3,
+    "failed": 0,
+    "avg_total_ms": 10393.163452337225,
+    "studies_per_hour": 346.3815436473703,
+    "bottleneck_stage": "LLM Inference",
+    "bottleneck_percentage": 93.24805787746462
+  },
+  "timing_breakdown_ms": {
+    "dicom_load": 668.3932086695373,
+    "spine_detection": 17.57080200089452,
+    "prompt_fetch": 11.560680000305487,
+    "llm_inference": 9691.423071334915,
+    "pdf_generation": 4.193664669098022
+  },
+  "individual_results": [
+    {
+      "study_id": "bench-0000-929429be",
+      "success": true,
+      "error": null,
+      "total_ms": 15021.041191008408,
+      "vertebrae_detected": 2,
+      "abnormalities_found": 0,
+      "report_tokens": 490
+    },
+    {
+      "study_id": "bench-0001-1fcfcc23",
+      "success": true,
+      "error": null,
+      "total_ms": 14539.450234995456,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 489
+    },
+    {
+      "study_id": "bench-0002-8c76713a",
+      "success": true,
+      "error": null,
+      "total_ms": 1618.998931007809,
+      "vertebrae_detected": 1,
+      "abnormalities_found": 0,
+      "report_tokens": 52
+    }
+  ]
+}

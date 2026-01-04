@@ -1,0 +1,163 @@
+{
+  "benchmark_time": "2026-01-03T23:30:53.270876",
+  "config": {
+    "num_studies": 15,
+    "warmup": 2,
+    "spine_model": "/home/ai/Desktop/quantum-rails/queenbee-llm/spine_detector/checkpoints/spine_detector_20260103_140009/weights/best.pt",
+    "bumble_url": "http://localhost:11434",
+    "queenbee_url": "http://192.168.0.52:8200"
+  },
+  "summary": {
+    "total_studies": 15,
+    "successful": 15,
+    "failed": 0,
+    "avg_total_ms": 4368.205628598419,
+    "studies_per_hour": 824.137026982197,
+    "bottleneck_stage": "LLM Inference",
+    "bottleneck_percentage": 78.00003733706113
+  },
+  "timing_breakdown_ms": {
+    "dicom_load": 928.2066159978664,
+    "spine_detection": 17.754107465346653,
+    "prompt_fetch": 12.057822668187631,
+    "llm_inference": 3407.2020212663724,
+    "pdf_generation": 2.963459131812366
+  },
+  "individual_results": [
+    {
+      "study_id": "bench-0000-929429be",
+      "success": true,
+      "error": null,
+      "total_ms": 2743.0183660035254,
+      "vertebrae_detected": 2,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0001-1fcfcc23",
+      "success": true,
+      "error": null,
+      "total_ms": 14509.56830799987,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 488
+    },
+    {
+      "study_id": "bench-0002-8c76713a",
+      "success": true,
+      "error": null,
+      "total_ms": 1790.847902011592,
+      "vertebrae_detected": 1,
+      "abnormalities_found": 0,
+      "report_tokens": 58
+    },
+    {
+      "study_id": "bench-0003-ba84a8ee",
+      "success": true,
+      "error": null,
+      "total_ms": 2128.826735992334,
+      "vertebrae_detected": 1,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0004-b8830e3b",
+      "success": true,
+      "error": null,
+      "total_ms": 3522.3907939944183,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 68
+    },
+    {
+      "study_id": "bench-0005-d4b14446",
+      "success": true,
+      "error": null,
+      "total_ms": 2474.6527709939983,
+      "vertebrae_detected": 1,
+      "abnormalities_found": 0,
+      "report_tokens": 62
+    },
+    {
+      "study_id": "bench-0006-5b039219",
+      "success": true,
+      "error": null,
+      "total_ms": 2804.636011002003,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0007-fee42c0d",
+      "success": true,
+      "error": null,
+      "total_ms": 15785.533356989617,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 511
+    },
+    {
+      "study_id": "bench-0008-2d1af2f2",
+      "success": true,
+      "error": null,
+      "total_ms": 1854.094055990572,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0009-d4bdfc40",
+      "success": true,
+      "error": null,
+      "total_ms": 2385.880255009397,
+      "vertebrae_detected": 6,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0010-890119af",
+      "success": true,
+      "error": null,
+      "total_ms": 1577.066758996807,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0011-ca7c9b72",
+      "success": true,
+      "error": null,
+      "total_ms": 2800.8867210010067,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 0,
+      "report_tokens": 51
+    },
+    {
+      "study_id": "bench-0012-146998b7",
+      "success": true,
+      "error": null,
+      "total_ms": 2864.4731050007977,
+      "vertebrae_detected": 1,
+      "abnormalities_found": 2,
+      "report_tokens": 56
+    },
+    {
+      "study_id": "bench-0013-64915270",
+      "success": true,
+      "error": null,
+      "total_ms": 5117.104111996014,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 2,
+      "report_tokens": 130
+    },
+    {
+      "study_id": "bench-0014-7994fce7",
+      "success": true,
+      "error": null,
+      "total_ms": 3164.1051759943366,
+      "vertebrae_detected": 0,
+      "abnormalities_found": 1,
+      "report_tokens": 60
+    }
+  ]
+}
